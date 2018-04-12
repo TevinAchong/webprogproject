@@ -8,7 +8,8 @@
     <title>farmShare</title>
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="{% static 'farmshare/css/master.css' %}">
+    <link rel="stylesheet" href="{% static 'css/master.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
 <body>
@@ -19,14 +20,57 @@
             <a href="{%url 'home' %}">farmShare</a>
             <ul>
                 {% if user.is_authenticated %}
-                <li><a href="#">Ask a Question</a></li>
-                <li><a href="#">Crop Data</a></li>
-                <li><a href="#">Browse Questions</a></li>
-                <li><a href="{%url 'farmers:logout' %}">Logout</a></li>
+
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+                    <div class="container">
+                      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <a href="index.html" class="navbar-brand" style="color : #7caf4f;"> <img src="{%static "farmshare/img/logo.svg" %}" alt="" id="logo"> farmShare</a>
+                      <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav ml-auto"> <!-- Margin Left Auto -->
+                          <li class="nav-item">
+                            <a href="#" class="nav-link">Ask a Question |</a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="#" class="nav-link">Browse Questions |</a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="#" class="nav-link">Crop Data |</a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="{%url 'farmers:logout' %}" class="nav-link">Logout</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                </nav>
+
                 {%else%}
-                <li><a href="#">Browse Questions</a></li>
-                <li><a href="{% url 'farmers:login' %}">Login</a></li>
-                <li><a href="{%url 'farmers:signup' %}">Sign Up</a></li>
+
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+                    <div class="container">
+                      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <a href="index.html" class="navbar-brand" style="color : #7caf4f;"> <img src="img/logo.svg" alt="" id="logo"> farmShare</a>
+                      <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav ml-auto"> <!-- Margin Left Auto -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Browse Questions</a>
+                        </li>
+                          <li class="nav-item">
+                            <a href="{% url 'farmers:login' %}" class="nav-link">Login</a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="{%url 'farmers:signup' %}" class="nav-link">Sign Up</a>
+                          </li>
+                          
+                        </ul>
+                      </div>
+                    </div>
+                </nav>
+
                 {%endif%}
             </ul>
         </div>
@@ -40,8 +84,8 @@
 
 
 
-    <script></script>
-    <script></script>
-    <script></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
