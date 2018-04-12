@@ -2,14 +2,111 @@
 {% load bootstrap4 %}
 
 {%block content %}
-    <div class="container">
-        <h1>Sign Up</h1>
-        <form method="POST">
-            {% csrf_token %}
-            {% bootstrap_form form %}
+<style>
+  *:not(.fa) {
+  font-family: 'Gugi', cursive !important; }
 
-            <input type="submit" value="Sign Up" class="btn btn-default">
-        </form>
-    </div>
+body {
+  background: #e2e2e2;
+  color: #fff; }
+
+.navbar {
+  border-bottom: #7caf4f 3px solid;
+  opacity: 0.8; }
+
+.navbar-brand {
+  color: #7caf4f; }
+
+#login-card {
+  background-color: #7caf4f; }
+
+#home-section {
+  height: 100vh;
+  background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.8)), url("https://images.unsplash.com/uploads/1413212107862c7462de2/ef4a956d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e44e1dfc72febbffb20b0144726077c6&auto=format&fit=crop&w=1950&q=80");
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 700px; 
+  width : 100%; }
+  #home-section .home-inner {
+    padding-top: 150px; }
+  #home-section .card-form {
+    opacity: 0.8; }
+  #home-section .fa {
+    color: #7caf4f;
+    background: #fff;
+    padding: 4px;
+    border-radius: 5px;
+    font-size: 30px; }
+
+#logo {
+  width: 20%; }
+
+</style>
+
+<header id="home-section">
+
+    <div class="dark-overlay">
+      <div class="home-inner">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 d-none d-lg-block">
+              <h1 class="display-4">
+                Get and share the latest data and trends on <strong>crops</strong> in <strong>Trinidad and Tobago!</strong>
+              </h1>
+
+              <div class="d-flex flex-row">
+                <div class="p-4 align-self-start">
+                  <i class="fa fa-check"></i>
+                </div>
+                <div class="p-4 align-self-end">
+                  Connect with other farmers in your country. Get external opinions. 
+                </div>
+              </div>
+
+              <div class="d-flex flex-row">
+                <div class="p-4 align-self-start">
+                  <i class="fa fa-check"></i>
+                </div>
+                <div class="p-4 align-self-end">
+                  Data retrieved from the most trusted open-data source in the country, data.tt
+                </div>
+              </div>
+
+              <div class="d-flex flex-row">
+                <div class="p-4 align-self-start">
+                  <i class="fa fa-check"></i>
+                </div>
+                <div class="p-4 align-self-end">
+                  Only registered farmers are allowed to sign-up, so you can be sure that the content posted is relevant. 
+                </div>
+              </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="card text-center card-form" id="login-card">
+                    <div class="card-body">
+                        <h3>Sign Up Today</h3>
+                        <p>Please fill out this form to register</p>
+                        <form method="POST">
+                            {%csrf_token%}
+                            {%for field in form%}
+                            <div class="form-group">
+                                {{ field }}
+                            </div>
+                            {%endfor%}
+                            <input type="submit" class="btn btn-outline-light btn-block">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </header>
+
+
+
+    
 
 {%endblock%}

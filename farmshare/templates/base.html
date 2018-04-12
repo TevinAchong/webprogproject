@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="{% static 'css/master.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
+
 
 </head>
 <body>
@@ -17,7 +20,7 @@
 
     <nav>
         <div class="container">
-            <a href="{%url 'home' %}">farmShare</a>
+            <!-- <a href="{%url 'home' %}">farmShare</a> -->
             <ul>
                 {% if user.is_authenticated %}
 
@@ -30,13 +33,13 @@
                       <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav ml-auto"> <!-- Margin Left Auto -->
                           <li class="nav-item">
-                            <a href="#" class="nav-link">Ask a Question |</a>
+                            <a href="#" class="nav-link">Ask a Question</a>
                           </li>
                           <li class="nav-item">
-                            <a href="#" class="nav-link">Browse Questions |</a>
+                            <a href="#" class="nav-link">Browse Questions</a>
                           </li>
                           <li class="nav-item">
-                            <a href="#" class="nav-link">Crop Data |</a>
+                            <a href="#" class="nav-link">Crop Data</a>
                           </li>
                           <li class="nav-item">
                             <a href="{%url 'farmers:logout' %}" class="nav-link">Logout</a>
@@ -53,7 +56,7 @@
                       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                       </button>
-                      <a href="index.html" class="navbar-brand" style="color : #7caf4f;"> <img src="img/logo.svg" alt="" id="logo"> farmShare</a>
+                      <a href="#" class="navbar-brand" style="color : #7caf4f;"> <img src="{%static "img/logo.svg" %}" alt="" id="logo"> farmShare</a>
                       <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav ml-auto"> <!-- Margin Left Auto -->
                         <li class="nav-item">
@@ -76,11 +79,11 @@
         </div>
     </nav>
 
-    <div class="container">
-        {% block content %}
+  
+      {% block content %}
 
-        {% endblock %}
-    </div>
+      {% endblock %}
+    
 
 
 

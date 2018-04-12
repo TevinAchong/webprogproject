@@ -8,9 +8,18 @@ class FarmerCreateForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].label = 'Display Name'
-        self.fields['email'].label = 'Email Address'
-        self.fields['password1'].label = 'Password'
-        self.fields['password2'].label = 'Confirm Password'
+        self.fields['username'].widget.attrs['class'] = 'form-control form-control-lg'
+        self.fields['email'].widget.attrs['class'] = 'form-control form-control-lg'
+        self.fields['password1'].widget.attrs['class'] = 'form-control form-control-lg'
+        self.fields['password2'].widget.attrs['class'] = 'form-control form-control-lg'
+
+        self.fields['username'].widget.attrs['placeholder'] = 'Username'
+        self.fields['email'].widget.attrs['placeholder'] = 'Email Address'
+        self.fields['password1'].widget.attrs['placeholder'] = 'Password'
+        self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
+
+        
+
+
 
         
