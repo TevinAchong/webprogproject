@@ -1,4 +1,4 @@
-Django version 1.10.5
+Django version 1.11
 ===
 
 Certain packages may have been renamed in newer versions of Django
