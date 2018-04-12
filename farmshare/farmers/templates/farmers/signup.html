@@ -44,7 +44,7 @@ body {
 </style>
 
 <header id="home-section">
-
+  
     <div class="dark-overlay">
       <div class="home-inner">
         <div class="container">
@@ -83,6 +83,20 @@ body {
 
             </div>
             <div class="col-lg-4">
+              {% if form.errors %}
+                {% for field in form %}
+                  {% for error in field.errors %}
+                      <div class="alert alert-danger">
+                          <strong>{{ error|escape }}</strong>
+                      </div>
+                  {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                  <div class="alert alert-danger">
+                      <strong>{{ error|escape }}</strong>
+                  </div>
+                {% endfor %}
+              {% endif %}
                 <div class="card text-center card-form" id="login-card">
                     <div class="card-body">
                         <h3>Sign Up Today</h3>
@@ -103,6 +117,8 @@ body {
             </div>
             </div>
             </div>
+
+            
             </header>
 
 
