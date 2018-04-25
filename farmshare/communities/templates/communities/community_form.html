@@ -3,7 +3,7 @@
 
 {% block community_content %}
 <h4> Start a New Community! </h4>
-    <form action="{% url 'communities : create' %}" method = 'post' id = 'communityForm'>
+    <form action="{% url 'communities:create' %}" method = 'post' id = 'communityForm'>
         {% csrf_token %}
         {% bootstrap_form form %}
 

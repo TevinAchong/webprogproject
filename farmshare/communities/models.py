@@ -9,11 +9,11 @@ User = get_user_model()
 register = template.Library() #Custom template tags
 
 class Community(models.Model):
-    name = models.CharField(max_length = 200. unique = True)
+    name = models.CharField(max_length = 200, unique = True)
     slug = models.SlugField(allow_unicode = True, unique = True)
     description = models.TextField(blank = True, default = '')
     description_html = models.TextField(editable = False, default = '', blank = True)
-    members = ManyToManyField(User, through = 'CommunityMember')
+    members = models.ManyToManyField(User, through = 'CommunityMember')
 
     def __str__ (self):
         return self.name
@@ -42,6 +42,6 @@ class CommunityMember(models.Model):
     class Meta:
         unique_together = ('community', 'user')
 
-    pass
+    
 
 
