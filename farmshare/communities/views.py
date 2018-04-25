@@ -19,7 +19,7 @@ class ListCommunities(generic.ListView):
 
 class JoinCommunity(LoginRequiredMixin, generic.RedirectView):
     def get_redirect_url(self, *args, **kwargs):
-        return reverse('communities:single', kwargs = {'slug' : self.kwargs.get('slug')})
+        return reverse('communities:single', kwargs = {"slug":self.kwargs.get("slug")})
     
     def get(self, request, *args, **kwargs):
         community = get_object_or_404(Community, slug = self.kwargs.get('slug'))
