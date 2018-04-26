@@ -30,7 +30,7 @@
     <div class="col-md-8">
         <div class="list-group">
             {%for comm in object_list %}
-                <a href="{% url 'communities:single' slug=community.slug %}" class = "list-group-item">
+                <a href="{% url 'communities:single' slug=comm.slug %}" class = "list-group-item">
                     <h3 class="title list-group-item-heading">{{comm.name}}</h3>
                     <div class="list-group-item-text container-fluid">
                         {{ comm.description_html|safe}}
