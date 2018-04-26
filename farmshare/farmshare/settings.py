@@ -26,7 +26,7 @@ SECRET_KEY = '#9ohy^&6h=v^gq4#h&e9=t+#=*b=+ed!3h%sbv6+dj1a@5yf6k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['demo-farmshare.herokuapp.com']
+ALLOWED_HOSTS = ['demo-farmshare.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
