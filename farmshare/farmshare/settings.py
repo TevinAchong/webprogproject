@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -25,7 +26,7 @@ SECRET_KEY = '#9ohy^&6h=v^gq4#h&e9=t+#=*b=+ed!3h%sbv6+dj1a@5yf6k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['demo-farmshare.herokuapp.com']
 
 
 # Application definition
@@ -77,6 +78,8 @@ WSGI_APPLICATION = 'farmshare.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
+#SECRET_KEY = ('SECRET_KEY')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -121,12 +124,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+
 STATIC_URL = '/static/'
-STATICFILES_DIR = [os.path.join(BASE_DIR, 'static/')]
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR, 'static/'),
+    os.path.join(PROJECT_ROOT, 'static'),
+]
+
+
 
 LOGIN_REDIRECT_URL = 'test'
 LOGOUT_REDIRECT_URL = 'thanks'
-
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#django-heroku.settings(locals())
 
 
 
