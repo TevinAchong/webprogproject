@@ -3,13 +3,15 @@ from django.utils.text import slugify #Removing characters that are not alphanum
 import misaka #Link embedding
 from django.contrib.auth import get_user_model
 from django import template
+from django.conf import settings
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 User = get_user_model()
 register = template.Library() #Custom template tags
 
 class Community(models.Model):
-    name = models.CharField(max_length = 200, unique = True)
+    name = models.CharField(max_length = 255, unique = True)
     slug = models.SlugField(allow_unicode = True, unique = True)
     description = models.TextField(blank = True, default = '')
     description_html = models.TextField(editable = False, default = '', blank = True)
@@ -24,7 +26,8 @@ class Community(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('community : single', kwargs = {'slug' : self.slug})
+        print(self.slug, "*********")
+        return reverse("communities:single", kwargs={"slug":self.slug})
 
     class Meta:
         ordering = ['name']

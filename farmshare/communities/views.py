@@ -2,9 +2,10 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.urlresolvers import reverse
 from django.views import generic
-from communities.models import Community
+from communities.models import Community, CommunityMember
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
+from django.db import IntegrityError
 
 # Create your views here.
 class CreateCommunity(LoginRequiredMixin, generic.CreateView):
@@ -19,13 +20,13 @@ class ListCommunities(generic.ListView):
 
 class JoinCommunity(LoginRequiredMixin, generic.RedirectView):
     def get_redirect_url(self, *args, **kwargs):
-        return reverse('communities:single', kwargs = {"slug":self.kwargs.get("slug")})
+        return reverse("communities:single", kwargs={"slug":self.kwargs.get("slug")})
     
     def get(self, request, *args, **kwargs):
-        community = get_object_or_404(Community, slug = self.kwargs.get('slug'))
+        community = get_object_or_404(Community, slug=self.kwargs.get('slug'))
 
         try:
-            CommunityMember.objects.create(user = self.request.user, community = community)
+            CommunityMember.objects.create(user=self.request.user, community=community)
         except IntegrityError:
             messages.warning(self.request, ('Already a member of this community'))
 
@@ -40,11 +41,11 @@ class LeaveCommunity(LoginRequiredMixin, generic.RedirectView):
     
     def get(self, request, *args, **kwargs):
         try:
-            membership = models.CommunityMember.objects.filter(
+            membership = CommunityMember.objects.filter(
                 user = self.request.user, 
                 community__slug = self.kwargs.get('slug')
             ).get()
-        except models.CommunityMember.DoesNotExist:
+        except CommunityMember.DoesNotExist:
             messages.warning(self.request, 'You are not in this group')
         else:
             membership.delete()
