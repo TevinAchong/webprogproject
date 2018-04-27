@@ -17,3 +17,5 @@ wincertstore==0.2
 wrapt==1.10.11
 whitenoise==3.3.1
 gunicorn==19.7.1
+psycopg2==2.7.4
+dj_database_url==0.5.0

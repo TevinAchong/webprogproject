@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
@@ -78,12 +79,16 @@ WSGI_APPLICATION = 'farmshare.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-#SECRET_KEY = ('SECRET_KEY')
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'farmsharedb',
+        'USER': 'jimmel',
+        'PASSWORD':'Password#12',
+        'HOST': 'localhost',
+        'PORT' : '5432',
+        
     }
 }
 
@@ -132,7 +137,10 @@ STATICFILES_DIR = [
     os.path.join(PROJECT_ROOT, 'static'),
 ]
 
-
+import dj_database_url
+DATABASES = {
+    'default':dj_database_url.config(default='postgres://jimmel:Password#12@localhost/farmsharedb')
+}
 
 LOGIN_REDIRECT_URL = 'test'
 LOGOUT_REDIRECT_URL = 'thanks'
