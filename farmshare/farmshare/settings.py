@@ -139,7 +139,7 @@ STATICFILES_DIR = [
 
 import dj_database_url
 DATABASES = {
-    'default':dj_database_url.config(default='postgres://jimmel:Password#12@localhost/farmsharedb')
+    'default':dj_database_url.config(default='postgres://localhost'),
 }
 
 LOGIN_REDIRECT_URL = 'test'
